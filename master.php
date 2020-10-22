@@ -3,10 +3,10 @@
   include('connection/db.php');
   if(isset($_SESSION["login"]) && $_SESSION["username"]) {
     if($_SESSION["login"] !== "true") {
-      header('Location: pages/login.php');
+      header('Location: login.php');
     }
   } else {
-    header('Location: pages/login.php');
+    header('Location: login.php');
   }
 ?>
 <!DOCTYPE html>
@@ -39,6 +39,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <script src="plugins/jquery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -120,6 +121,12 @@
                 <a href="input_berita.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Input Berita</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="daftar_berita.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Daftar Berita</p>
                 </a>
               </li>
             </ul>

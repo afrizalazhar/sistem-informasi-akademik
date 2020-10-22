@@ -32,23 +32,26 @@ include('master.php');
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="process/input_berita.php" method="POST" enctype="multipart/form-data">
+                        <form role="form" action="process/update_berita.php" method="POST" enctype="multipart/form-data">
+                        <?php    $jadwal_kuliah = $conn->query("SELECT * FROM master_berita WHERE id = '$_GET[id]'");
+                            while($row = $jadwal_kuliah->fetch_assoc()) { ?>
                             <div class="card-body row">
                                 <div class="col-6">
                                     <div class="form-group">
+                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                         <label for="kd_matakuliah">Judul Berita</label>
-                                        <input type="text" name="judul" class="form-control" required>
+                                        <input type="text" name="judul" class="form-control" value="<?php echo $row['judul'] ?>" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="kd_matakuliah">Jadwal Terbit Berita</label>
-                                        <input type="datetime-local" name="jadwal" class="form-control" required>
+                                        <input type="datetime-local" name="jadwal" class="form-control" value="<?php echo date('Y-m-d\TH:i', strtotime($row['jadwal_terbit'])); ?>" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Sampul</label>
-                                        <input type="file" class="form-control mb-2" name="gambar_sampul" accept="image/*" id="imgInp" required>
-                                        <img class="img-fluid" id="blah" style='max-height: 500px'>
+                                        <input type="file" class="form-control mb-2" name="gambar_sampul" accept="image/*" id="imgInp">
+                                        <img src="file/<?php echo $row['gambar_sampul']; ?>" class="img-fluid" id="blah" style='max-height: 500px'>
                                     </div>
                                 </div>
                                 
@@ -56,15 +59,16 @@ include('master.php');
                                     <div class="form-group">
                                         <label>Konten</label>
                                         <textarea class="textarea" name="konten" placeholder="Place some text here" style="width: 100%; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                            <?php echo $row["konten"]; ?>
                                         </textarea>
                                     </div>
                                 </div>
                             
                             </div>
                             <!-- /.card-body -->
-
+                            <?php } ?>
                             <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>

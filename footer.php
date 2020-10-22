@@ -15,7 +15,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -53,8 +53,8 @@
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script>
-    function pushId(id) {
-        $('input[name="id_jadwal"]').val(id);
+    function pushId(input_name, id) {
+        $('input[name="'+input_name+'"]').val(id);
     }
   $(function () {
     $('#example2').DataTable({

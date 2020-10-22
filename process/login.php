@@ -14,6 +14,6 @@ if($_POST) {
     $_SESSION["error"] = "Username / Password salah";
 }
 
-header('Location: ../pages/login.php');
+header('Location: ../login.php');
 
 ?>
